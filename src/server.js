@@ -4,10 +4,11 @@ const Hapi = require("hapi");
 const routes = require("./routes");
 
 const app = async config => {
-    // const { host, port } = config;
+    const { host, port } = config;
 
     // create an instance of hapi
-    const server = Hapi.server(config);
+    const server = Hapi.server({ host, port });
+
     // store the config for later use
     server.app.config = config;
 
