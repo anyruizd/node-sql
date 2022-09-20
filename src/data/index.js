@@ -29,12 +29,10 @@ const client = async ( server, config ) => {
             if ( pool ) {
                 // has the connection pool already been created?
                 // if so, return the existing pool
-                console.log('try pool', pool);
                 return pool;
             }
             // create a new connection pool
             pool = await sql.connect( config );
-            console.log('populated pool', pool)
             // catch any connection errors and close the pool
             pool.on( "error", async err => {
                 server.log( [ "error", "data" ], "connection pool error" );
